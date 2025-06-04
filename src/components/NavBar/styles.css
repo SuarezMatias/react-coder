@@ -1,0 +1,30 @@
+nav {
+  display: flex;
+  align-items: center;
+  background-color: #2563eb;
+  padding: 1rem;
+  color: white;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+
+  img {
+    max-width: 200px;
+  }
+
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links li {
+  cursor: pointer;
+}
+
+.nav-links li:hover {
+  text-decoration: underline;
+}
