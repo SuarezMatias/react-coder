@@ -1,4 +1,4 @@
-nav {
+.general-nav {
   display: flex;
   align-items: center;
   background-color: #2563eb;
@@ -14,17 +14,4 @@ nav {
     max-width: 200px;
   }
 
-}
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-}
-
-.nav-links li {
-  cursor: pointer;
-}
-
-.nav-links li:hover {
-  text-decoration: underline;
 }
