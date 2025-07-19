@@ -9,11 +9,11 @@ const Item = ({item}) => {
      <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={url} />
       <Card.Body>
-        <Card.Title>{item.nombre}</Card.Title>
-        <Card.Text>
-          {item.descripcion}
+        <Card.Title>{item.title}</Card.Title>
+        <Card.Text className="item-description">
+          {item.description}
         </Card.Text>
-        <Button variant="primary" as={Link} to={`/item/${item.id}`}>Ver más</Button>
+        <Button variant="primary" as={Link} to={`/item/${item.id}`}>Show more</Button>
       </Card.Body>
     </Card>
   );

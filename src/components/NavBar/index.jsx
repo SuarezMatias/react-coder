@@ -1,24 +1,20 @@
 import { useEffect, useState } from "react"
-import { Navbar, Nav, NavDropdown, Container, Dropdown } from "react-bootstrap";
-import { Link } from "react-router";
+import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import { NavLink } from "react-router";
 import CartWidget from "../CartWidget"
+import { getCategories } from "../../firebase/db";
 import "./styles.css"
 
 const NavBar = () => {
   const [categories, setCategories] = useState([])
-  const baseUrl = "https://dummyjson.com"
+  getCategories().then(res => setCategories(res))
 
   useEffect(() => {
-    fetch(`${baseUrl}/products/categories`)
-      .then(res => res.json())
-      .then(data => setCategories(data))
-      .catch(err => console.error("Error cargando categorías:", err))
-
-    debugger;  
+    
   }, [])
 
   return (
-    <Navbar bg="light" expand="lg" className="general-nav">
+    <Navbar bg="light" expand="lg" className="general-nav mb-5">
       <Container>        
         <Navbar.Brand>
           <img src="../src/assets/logo.jpg" alt="Logo" width="150" />
@@ -26,9 +22,12 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="main-navbar" />
         <Navbar.Collapse id="main-navbar">
           <Nav className="me-auto">
-            <NavDropdown title="Categorias" id="categories-nav-dropdown">
+            <NavDropdown title="Categories" id="categories-nav-dropdown">
+              <NavDropdown.Item as={NavLink} to={`/category/all`}>
+                  {"All categories"}
+                </NavDropdown.Item>
               {categories.map((cat) => (
-                <NavDropdown.Item as={Link} key={cat.slug} to={`/category/${cat.slug}`}>
+                <NavDropdown.Item as={NavLink} key={cat.slug} to={`/category/${cat.slug}`}>
                   {cat.name}
                 </NavDropdown.Item>
               ))}

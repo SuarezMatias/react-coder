@@ -15,10 +15,9 @@ const ItemDetail = ({item}) => {
             <Card.Text>{item.description}</Card.Text>
             <Card.Text>Price: ${item.price}</Card.Text>
             <Card.Text>Category: {item.category}</Card.Text>
-            <Button variant="primary">Add to Cart</Button>
           </Card.Body>
           <Card.Footer>
-            <ItemCount />
+            <ItemCount item={item} />
           </Card.Footer>
         </Card> 
       )}
