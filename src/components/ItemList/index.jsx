@@ -1,4 +1,5 @@
 import Item from "../Item";
+import Loader from "../Loader";
 import { Container, Row, Col } from "react-bootstrap"
 import "./styles.css";
 
@@ -14,7 +15,7 @@ const ItemList = ({ items }) => {
           ))}
         </Row>
       ) : (
-        <p>No items available</p>
+        <Loader />
       )}
     </Container>
   );

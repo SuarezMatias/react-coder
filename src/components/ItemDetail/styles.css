@@ -1,0 +1,9 @@
+.item-detail-card .card {
+    align-items: center;
+    width: 400px;
+    margin: 20px auto;
+
+    img {
+        max-width: 200px;
+    }
+}

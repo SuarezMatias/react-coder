@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import { Card, ListGroup, Image } from "react-bootstrap";
+import { Card, ListGroup, Image, Button } from "react-bootstrap";
+import { useNavigate } from "react-router";
 
 const Cart = () => {
     const { cart, getTotalPrice } = useContext(CartContext);
+    const navigate = useNavigate();
     return (
         <div className="cart-container d-flex gap-3 justify-content-center flex-wrap">
             <Card className="mb-3 w-75">
@@ -33,10 +35,13 @@ const Cart = () => {
                     ) : (<p>Your cart is empty</p>)}                 
                 </ListGroup>
             </Card>
-            <Card className="total-price">
+            <Card className="total-price p-3">
                 <Card.Body>
                     <h5>Total Price: ${getTotalPrice()}</h5>
                 </Card.Body>
+                <Card.Footer className="bg-transparent p-0">
+                    <Button variant="dark" className="mt-3 w-100" disabled={cart.length === 0} onClick={() => navigate('/checkout')}>Checkout</Button>
+                </Card.Footer>
             </Card>
         </div>
     );

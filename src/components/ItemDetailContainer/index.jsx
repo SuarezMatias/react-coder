@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import ItemDetail from "../ItemDetail";
-import "./styles.css";
+import Loader from "../Loader";
+import { getItemById } from "../../firebase/db";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState();
   const { productId } = useParams();
 
   useEffect(() => {
-    const baseUrl = "https://dummyjson.com/products";
-    fetch(`${baseUrl}/${productId}`)
-      .then((res) => res.json())
-      .then((data) => setItem(data))
-      .catch((err) => console.error("Error fetching item details:", err));
+   getItemById(productId)
+    .then(res => setItem(res))
+    .catch(err => console.error("Error charging product:", err));
   }, [productId]);
 
   return (
@@ -20,7 +19,7 @@ const ItemDetailContainer = () => {
       {item ? (
         <ItemDetail item={item} />
       ) : (
-        <p>Loading item details...</p>
+        <Loader />
       )}
     </div>
   );

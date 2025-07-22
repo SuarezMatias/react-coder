@@ -12,7 +12,9 @@ const CartWidget = () => {
       <Button variant="ligth" className="cart-button" as={Link} to={'/cart'}>
         <ShoppingCart color="orange" />
       </Button>
-      <span className="cart-badge">{getQuantity()}</span>
+      {getQuantity() > 0 && (
+        <span className="cart-badge">{getQuantity()}</span>
+      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { getDocs, collection, getFirestore, query, where } from "firebase/firestore";
+import { getDocs, getDoc, collection, getFirestore, query, where, doc, addDoc } from "firebase/firestore";
 import { app } from "./config";
 
 const db = getFirestore(app);
@@ -10,9 +10,10 @@ export const getItems = async() => {
     return items;
 };
 
-export const getItemById = async(id) => {
-    const docRef = collection(db, "items").doc(id);
-    const docSnap = await getDocs(docRef);
+export const getItemById = async (id) => {
+    debugger;
+    const docRef = doc(db, "items", id);
+    const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
         return { id: docSnap.id, ...docSnap.data() };
     } else {
@@ -32,5 +33,12 @@ export const getCategories = async() => {
     const categories = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     return categories;
 };
+
+export const createOrder = async(orderDetails) => {
+    const ordersCollection = collection(db, "orders");
+    const docRef = await addDoc(ordersCollection, orderDetails);
+    return docRef.id;
+}
+
 
 
