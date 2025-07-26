@@ -18,7 +18,7 @@ const Cart = () => {
   return (
     <div className="cart-container d-flex gap-3 justify-content-center flex-wrap">
       <Card className="mb-3 w-75">
-        <ListGroup as="ol" numbered>
+        <ListGroup as="ol" className="gap-3" numbered>
           {cart.length > 0 ? (
             cart.map((item) => (
               <ListGroup.Item
