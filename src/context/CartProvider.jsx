@@ -18,6 +18,14 @@ const addToCart = (item) => {
   });
 };
 
+const removeFromCart = (itemId) => {
+  setCart((previousStateCart) => previousStateCart.filter((item) => item.id !== itemId));
+};
+
+const clearCart = () => {
+  setCart([]);
+};
+
 const getQuantity = () => {
   return cart.reduce((total, item) => total + item.quantity, 0);
 };
@@ -27,7 +35,7 @@ const getTotalPrice = () => {
 };
 
 return (
-  <CartContext.Provider value={{cart, addToCart, getQuantity, getTotalPrice}}>
+  <CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart, getQuantity, getTotalPrice}}>
     {children}
   </CartContext.Provider>
 );

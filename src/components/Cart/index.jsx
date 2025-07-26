@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Card, ListGroup, Image, Button } from "react-bootstrap";
+import { FaTrash } from 'react-icons/fa';
 import { useNavigate } from "react-router";
 
 const Cart = () => {
-    const { cart, getTotalPrice } = useContext(CartContext);
+    const { cart, getTotalPrice, removeFromCart } = useContext(CartContext);
     const navigate = useNavigate();
     return (
         <div className="cart-container d-flex gap-3 justify-content-center flex-wrap">
@@ -27,6 +28,13 @@ const Cart = () => {
                                         </div>
                                         <div className="item-total-price">
                                             <p className="m-0">Total: ${item.amount}</p>
+                                            <Button
+                                                variant="danger"
+                                                size="sm"
+                                                onClick={() => removeFromCart(item.id)}
+                                            >
+                                                <FaTrash />
+                                            </Button>
                                         </div>
                                     </div>
                                 </div>
@@ -40,7 +48,7 @@ const Cart = () => {
                     <h5>Total Price: ${getTotalPrice()}</h5>
                 </Card.Body>
                 <Card.Footer className="bg-transparent p-0">
-                    <Button variant="dark" className="mt-3 w-100" disabled={cart.length === 0} onClick={() => navigate('/checkout')}>Checkout</Button>
+                    <Button variant="dark" className="mt-3 w-100 mx-auto" disabled={cart.length === 0} onClick={() => navigate('/checkout')}>Checkout</Button>
                 </Card.Footer>
             </Card>
         </div>
