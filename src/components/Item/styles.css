@@ -1,3 +1,10 @@
+.card {
+  width: 300px;
+
+  img {
+    width: 230px;
+  }
+}
 .item-list-container {
   padding: 1rem;
   text-align: center;
@@ -13,6 +20,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Number of lines to show */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }

@@ -4,13 +4,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 import App from './App.jsx'
 import CartProvider from './context/CartProvider.jsx'
+import NotificationProvider from './context/NotificationContext/NotificationProvider.jsx'
 
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <CartProvider>
-      <App />
-    </CartProvider>
+    <NotificationProvider>
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </NotificationProvider>
   </StrictMode>,
 )

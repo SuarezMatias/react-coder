@@ -16,13 +16,13 @@ const NavBar = () => {
   return (
     <Navbar bg="light" expand="lg" className="general-nav mb-5">
       <Container>        
-        <Navbar.Brand>
-          <img src="../src/assets/logo.jpg" alt="Logo" width="150" />
+        <Navbar.Brand as={NavLink} to={`/`}>
+            <img src="../src/assets/logo.jpg" alt="Logo" width="150" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar" />
         <Navbar.Collapse id="main-navbar">
           <Nav className="me-auto">
-            <NavDropdown title="Categories" id="categories-nav-dropdown">
+            <NavDropdown title="Categories" id="categories-nav-dropdown" >
               <NavDropdown.Item as={NavLink} to={`/category/all`}>
                   {"All categories"}
                 </NavDropdown.Item>

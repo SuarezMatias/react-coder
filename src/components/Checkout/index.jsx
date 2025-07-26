@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { NotificationContext } from "../../context/NotificationContext/NotificationContext";
 import {
   Card,
   Button,
@@ -19,10 +20,10 @@ const Checkout = () => {
   const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { cart, clearCart } = useContext(CartContext);
+  const { showToast } = useContext(NotificationContext);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
-    debugger;
     event.preventDefault();
     event.stopPropagation();
     const form = event.target;
@@ -63,7 +64,11 @@ const Checkout = () => {
         })
         .catch((error) => {
           setIsLoading(false);
-          console.error("Error creating order: ", error);
+          showToast(
+            "There was an error creating your order. Please try again later.",
+            "danger"
+          );
+          console.error("Error: ", error);
         });
     }
   };
